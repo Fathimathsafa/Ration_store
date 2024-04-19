@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../controller/controller.dart';
 import '../core/constants/color.dart';
+import '../presentation/common/confrmtn page/controller/controller.dart';
 
 
 class Confirm_Item_Widget extends StatelessWidget {

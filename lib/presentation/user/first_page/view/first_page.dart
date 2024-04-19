@@ -1,9 +1,9 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:ration_shop/controller/controller.dart';
 import 'package:ration_shop/core/constants/color.dart';
 
+import '../../../common/confrmtn page/controller/controller.dart';
 import '../../Second_page/view/second_page.dart';
 
 

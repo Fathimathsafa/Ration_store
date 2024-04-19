@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-import '../../../core/constants/color.dart';
-import '../../../global_widget/widget.dart';
-import '../../confrmtn page/view/cnfrmtn page.dart';
+
+import '../../../../core/constants/color.dart';
+import '../../../../global_widget/widget.dart';
+import '../../../common/confrmtn page/view/cnfrmtn page.dart';
 import '../../first_page/view/first_page.dart';
 
 class CardPage extends StatelessWidget {

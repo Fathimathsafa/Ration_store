@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../../../controller/controller.dart';
-import '../../../core/constants/color.dart';
-import '../../../global_widget/cnfrm_page.dart';
+
+import '../../../../core/constants/color.dart';
+import '../../../../global_widget/cnfrm_page.dart';
+import '../controller/controller.dart';
+
 
 class Confirm_page extends StatelessWidget {
   String category;

@@ -1,8 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:ration_shop/controller/controller.dart';
-import 'package:ration_shop/presentation/first_page/view/first_page.dart';
+import 'package:ration_shop/presentation/common/confrmtn%20page/controller/controller.dart';
+import 'package:ration_shop/presentation/user/first_page/view/first_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
