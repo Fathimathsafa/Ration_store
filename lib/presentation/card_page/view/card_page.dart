@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+
 import '../../../core/constants/color.dart';
 import '../../../global_widget/widget.dart';
+import '../../confrmtn page/view/cnfrmtn page.dart';
 import '../../first_page/view/first_page.dart';
 
 class CardPage extends StatelessWidget {
@@ -13,10 +15,14 @@ class CardPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: ColorTheme.maincolor,
-        title: Text(category,style: TextStyle(color: ColorTheme.primarycolor),),
-        leading: IconButton( onPressed: () {
-          Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=>First_Page()));
-        }, icon: Icon(Icons.arrow_back_outlined,size: 30,color: ColorTheme.primarycolor,),),
+        title: Text(category,style: TextStyle(color: Colors.white),),centerTitle: true,
+        leading:IconButton(onPressed: (){
+          Navigator.pushReplacement(
+              context,MaterialPageRoute(builder: (context)=>
+              First_Page()));
+        },
+            icon: Icon(Icons.arrow_back_ios,color: Colors.white)
+        ),
       ),
       body: StreamBuilder(
         stream: FirebaseFirestore.instance.collection('category').snapshots(),
@@ -48,11 +54,7 @@ class CardPage extends StatelessWidget {
                       itemBuilder: (BuildContext context, int index) {
                         final data = subSnapshot.data!.docs[index].data() as Map<String, dynamic>;
                         return Item_Widget(
-                          image: data['image'],
-                          name: data['name'],
-                          price: data['price'],
-                          totalprice: data['total price'],
-                          kg: data['quantity'],
+                          item: data,
                         );
                       },
                     ),
@@ -64,10 +66,13 @@ class CardPage extends StatelessWidget {
         },
       ),
       floatingActionButton: Container(width: 200,
-          child: FloatingActionButton(onPressed: (){},
+          child: FloatingActionButton(onPressed: (){
+            Navigator.push(context, MaterialPageRoute(builder: (context)=>
+                Confirm_page  (category: category)));
+          },
               child: Text("OK",style:TextStyle(
                   fontSize: 20,color: Colors.white,fontWeight: FontWeight.bold)),
-              shape: RoundedRectangleBorder( borderRadius: BorderRadius.circular(1)),
+              shape: RoundedRectangleBorder( borderRadius: BorderRadius.circular(5)),
               backgroundColor: ColorTheme.maincolor)),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
