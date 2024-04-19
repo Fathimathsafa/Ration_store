@@ -35,7 +35,7 @@ class First_Page extends StatelessWidget {
       body: Center(
         child: Column(
           children: [
-            SizedBox(height: size*350,),
+            SizedBox(height: size*351,),
             Container(
               height: size*50,
               width:  size*200,
