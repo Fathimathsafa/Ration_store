@@ -22,7 +22,7 @@ class First_Page extends StatelessWidget {
               child: ElevatedButton(
                 onPressed: () {
                   final provider=Provider.of<tile_controller>(context, listen:false);
-                  provider.clearcollection();
+                  provider.clearCollectiion();
                   Navigator.of(context).push(MaterialPageRoute(builder: (context)=> SecondPage()));
                 },
                 style: ElevatedButton.styleFrom(backgroundColor: ColorTheme.maincolor,shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),

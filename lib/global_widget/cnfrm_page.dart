@@ -33,7 +33,7 @@ class Confirm_Item_Widget extends StatelessWidget {
                   height: 150,
                   width: 250,
                   decoration: BoxDecoration(image: DecorationImage(
-                      image: NetworkImage("${item['image']}"),fit: BoxFit.fill),
+                      image: NetworkImage("${item['Image']}"),fit: BoxFit.fill),
                       borderRadius: BorderRadius.only(topLeft: Radius.circular(20),
                           topRight: Radius.circular(20))),
                 ),
@@ -42,13 +42,13 @@ class Confirm_Item_Widget extends StatelessWidget {
                     child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text("Item : ${item['name']}",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,
+                          Text("Item : ${item['Name']}",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,
                               color:Colors.white),),
-                          Text("Price/Kg : ₹${item['price']}",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,
+                          Text("Price/Kg : ₹${item['Price']}",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,
                               color:Colors.white),),
-                          Text("Weight : ${item['quantity']}",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,
+                          Text("Weight : ${item['Quantity']}",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,
                               color:Colors.white),),
-                          Text("Total Price : ₹${item['total price']}",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,
+                          Text("Total Price : ₹${item['TotalPrice']}",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,
                               color:Colors.white),),
                         ]))
               ],

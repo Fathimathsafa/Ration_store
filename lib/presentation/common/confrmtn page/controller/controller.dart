@@ -4,12 +4,18 @@ class tile_controller with ChangeNotifier{
   var selectedTileIndices = [];
   late int total;
   List<Map<String, dynamic>> collection = [];
-  void clearcollection(){
+
+  //to clear
+
+  void clearCollectiion(){
     collection.clear();
     selectedTileIndices.clear();
-    total =0;
+    total = 0;
     notifyListeners();
   }
+
+  // to select the needed items
+
   void toggleTile(String name) {
     if (selectedTileIndices.contains(name)) {
       selectedTileIndices.remove(name);// Deselect if already selected
@@ -20,13 +26,16 @@ class tile_controller with ChangeNotifier{
   }
   void togglenamelist( item, String name ){
     if (collection.contains(item)){
-      collection.removeWhere((item) => item['name'] == name);
-      int num= int.tryParse(item['total price']??'0')?? 0;
-      total -= num;
+      collection.removeWhere((item) => item['Name'] == name);
+
+      int num = int.tryParse(item['TotalPrice'] ?? '0') ?? 0 ;
+      total-=num;
     }
     else{
       collection.add(item);
-      int num= int.tryParse(item['total price']??'0')?? 0;
+
+      // adding
+      int num = int.tryParse(item['TotalPrice']?? '0')?? 0 ;
       total += num;
     }
     notifyListeners();

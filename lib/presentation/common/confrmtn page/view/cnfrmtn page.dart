@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import '../../../../core/constants/color.dart';
 import '../../../../global_widget/cnfrm_page.dart';
 import '../controller/controller.dart';
-
 
 class Confirm_page extends StatelessWidget {
   String category;
@@ -29,8 +27,8 @@ class Confirm_page extends StatelessWidget {
             padding: const EdgeInsets.all(10),
             child: GridView.builder(
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2, // Adjust the cross axis count as needed
-                childAspectRatio: 1 / 1.5, // Adjust the aspect ratio as needed
+                crossAxisCount: 2,
+                childAspectRatio: 1 / 1.5,
               ),
               itemCount: collection.length,
               itemBuilder: (BuildContext context, int index) {
@@ -42,13 +40,26 @@ class Confirm_page extends StatelessWidget {
           );
         },
       ),
-
-      floatingActionButton: Container(width: 200,
-          child: FloatingActionButton(onPressed: (){},
-              child: Text("CONFIRM",style:TextStyle(
-                  fontSize: 20,color: Colors.white,fontWeight: FontWeight.bold)),
-              shape: RoundedRectangleBorder( borderRadius: BorderRadius.circular(5)),
-              backgroundColor: ColorTheme.maincolor)),
+      floatingActionButton: Container(color: ColorTheme.maincolor,
+        child: Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(left: 20,right: 20),
+              child: Container(
+                  child: Text("Total Amount: ₹${Provider.of<tile_controller>(context).total}",style:TextStyle(
+                      fontSize: 18,color: Colors.white,fontWeight: FontWeight.bold),
+                    textAlign: TextAlign.center,)),
+            ),
+            Container(width: 130,
+                child: FloatingActionButton(onPressed: (){},
+                  child: Text("CONFIRM",style:TextStyle(
+                      fontSize: 20,color: Colors.white,fontWeight: FontWeight.bold)),
+                  shape: RoundedRectangleBorder( borderRadius: BorderRadius.circular(5)),
+                  backgroundColor: ColorTheme.maincolor,
+                  elevation: 0,)),
+          ],
+        ),
+      ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }

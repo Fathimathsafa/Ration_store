@@ -28,8 +28,9 @@ class _Payment_pageState extends State<Payment_page> {
               Container(
                 height: 200,
                 width: 200,
-                child:  Lottie.asset("assets/Animation - 1711328118289 (1).json"),
+                child:  Lottie.asset("assets/Animation - 1711328118289 (3).json"),
               ),
+              Text("CONFORM ",style: TextStyle(color: ColorTheme.primarycolor),)
             ],
           ),
         ),
