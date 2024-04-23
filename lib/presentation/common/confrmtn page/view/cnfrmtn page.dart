@@ -1,13 +1,16 @@
+
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../../../core/constants/color.dart';
 import '../../../../global_widget/cnfrm_page.dart';
+import '../../../user/QR_screen/view/qr_screen.dart';
 import '../controller/controller.dart';
 
 class Confirm_page extends StatelessWidget {
   String category;
   Confirm_page({required this.category});
-
+//  List<Map<String, dynamic>> datalist =[];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,7 +54,9 @@ class Confirm_page extends StatelessWidget {
                     textAlign: TextAlign.center,)),
             ),
             Container(width: 130,
-                child: FloatingActionButton(onPressed: (){},
+                child: FloatingActionButton(onPressed: (){
+                 Navigator.of(context).push(MaterialPageRoute(builder: (context)=>ScannerScreen()));
+                },
                   child: Text("CONFIRM",style:TextStyle(
                       fontSize: 20,color: Colors.white,fontWeight: FontWeight.bold)),
                   shape: RoundedRectangleBorder( borderRadius: BorderRadius.circular(5)),

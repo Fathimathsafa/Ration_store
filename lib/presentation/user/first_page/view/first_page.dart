@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:ration_shop/core/constants/color.dart';
 
 import '../../../common/confrmtn page/controller/controller.dart';
+import '../../../owner/Scanner_Page/view/Scanner_Screen.dart';
 import '../../Second_page/view/second_page.dart';
 
 
@@ -38,7 +39,9 @@ class First_Page extends StatelessWidget {
               height: size*50,
               width:  size*200,
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).push(MaterialPageRoute(builder: (context)=>ScannerScreen()));
+                },
                 style: ElevatedButton.styleFrom(backgroundColor: ColorTheme.maincolor,shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
 
                 child: Text(

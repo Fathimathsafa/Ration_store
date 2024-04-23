@@ -26,16 +26,16 @@ class tile_controller with ChangeNotifier{
   }
   void togglenamelist( item, String name ){
     if (collection.contains(item)){
-      collection.removeWhere((item) => item['Name'] == name);
+      collection.removeWhere((item) => item['name'] == name);
 
-      int num = int.tryParse(item['TotalPrice'] ?? '0') ?? 0 ;
+      int num = int.tryParse(item['total price'] ?? '0') ?? 0 ;
       total-=num;
     }
     else{
       collection.add(item);
 
       // adding
-      int num = int.tryParse(item['TotalPrice']?? '0')?? 0 ;
+      int num = int.tryParse(item['total price']?? '0')?? 0 ;
       total += num;
     }
     notifyListeners();
