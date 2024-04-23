@@ -63,10 +63,7 @@ class _ScannerScreenState extends State<ScannerScreen> {
         height: double.infinity,
         width: double.infinity,
         decoration: BoxDecoration(
-            image: DecorationImage(
-                image: NetworkImage(
-                    "https://i.pinimg.com/736x/8c/98/99/8c98994518b575bfd8c949e91d20548b.jpg"),
-                fit: BoxFit.cover)),
+           color: ColorTheme.maincolor),
         child: BackdropFilter(
           filter: ImageFilter.blur(sigmaX: 1, sigmaY: 2),
           child: Container(
@@ -84,7 +81,7 @@ class _ScannerScreenState extends State<ScannerScreen> {
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 18,
-                      color: ColorTheme.maincolor),
+                      color: ColorTheme.primarycolor,),
                 ),
                 SizedBox(
                   height: 20,
