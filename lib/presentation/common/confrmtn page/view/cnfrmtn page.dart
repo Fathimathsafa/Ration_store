@@ -13,6 +13,8 @@ class Confirm_page extends StatelessWidget {
 //  List<Map<String, dynamic>> datalist =[];
   @override
   Widget build(BuildContext context) {
+    List<Map<String,dynamic>> datas =
+        Provider.of<tile_controller>(context).collection;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: ColorTheme.maincolor,
@@ -55,7 +57,7 @@ class Confirm_page extends StatelessWidget {
             ),
             Container(width: 130,
                 child: FloatingActionButton(onPressed: (){
-                 Navigator.of(context).push(MaterialPageRoute(builder: (context)=>ScannerScreen()));
+                 Navigator.of(context).push(MaterialPageRoute(builder: (context)=>qr_image_page(datas: datas,)));
                 },
                   child: Text("CONFIRM",style:TextStyle(
                       fontSize: 20,color: Colors.white,fontWeight: FontWeight.bold)),

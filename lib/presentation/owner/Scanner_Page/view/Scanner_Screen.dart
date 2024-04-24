@@ -1,103 +1,69 @@
-
-import 'dart:async';
-import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:qr_code_scanner/qr_code_scanner.dart';
-import 'package:ration_shop/core/constants/color.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 
-import '../../../common/confrmtn page/view/cnfrmtn page.dart';
+import '../../../user/first_page/view/first_page.dart';
+import '../../scanned_page/scanned_page.dart';
 
 class ScannerScreen extends StatefulWidget {
   @override
-  State<ScannerScreen> createState() => _ScannerScreenState();
+  _ScannerScreenState createState() => _ScannerScreenState();
 }
 
 class _ScannerScreenState extends State<ScannerScreen> {
-  final GlobalKey qrKey = GlobalKey(debugLabel: 'QR');
-  Barcode? result;
-  QRViewController? controller;
-  bool isLoading = false;
-
+  String _barcode = 'Unknown';
   @override
   void initState() {
     super.initState();
+    _scanBarcode(); // Automatically trigger barcode scanning when the app starts
   }
 
-  void _onQRViewCreated(QRViewController controller) {
-    this.controller = controller;
-    controller.scannedDataStream.listen((scanData) {
-      if (!isLoading) {
-        setState(() {
-          isLoading = true;
-          result = scanData;
-        });
-        _navigateToDetailsScreen();
-      }
-    });
-  }
+  Future<void> _scanBarcode() async {
+    try {
+      String barcode = await FlutterBarcodeScanner.scanBarcode(
+        "#ff6666",
+        "Cancel",
+        true,
+        ScanMode.DEFAULT,
+      );
 
-  void _navigateToDetailsScreen() {
-    Timer(Duration(seconds: 2), () {
-      if (mounted) {
-        Navigator.push(
+      setState(() {
+        _barcode = barcode;
+      });
+      if (barcode == '-1') {
+        // User cancelled scanning, navigate to another screen or perform any action
+        Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-            builder: (context) => Confirm_page(category: 'category',),
+            builder: (context) => First_Page(),
           ),
         );
-        isLoading = false;
-        setState(() {});
+        return; // Exit the method if user cancels
       }
-    });
-  }
-
-  @override
-  void dispose() {
-    controller?.dispose();
-    super.dispose();
+      // Navigate to the next screen after scanning
+      if (_barcode.isNotEmpty) {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) => Scanned_Page(data: _barcode,),
+          ),
+        );
+      }
+    } on PlatformException catch (e) {
+      print("Error scanning barcode: ${e.message}");
+      setState(() {
+        _barcode = 'Failed to scan barcode';
+      });
+    }
   }
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        height: double.infinity,
-        width: double.infinity,
-        decoration: BoxDecoration(
-           color: ColorTheme.maincolor),
-        child: BackdropFilter(
-          filter: ImageFilter.blur(sigmaX: 1, sigmaY: 2),
-          child: Container(
-            // color: const Color.fromARGB(255, 255, 255, 255).withOpacity(0.5),
-            child: isLoading
-                ? Center(
-              child: CircularProgressIndicator(),
-            )
-                : Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Text(
-                  "Scan your Code",
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18,
-                      color: ColorTheme.primarycolor,),
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                Center(
-                  child: Container(
-                    height: 300,
-                    width: MediaQuery.sizeOf(context).width * .90,
-                    child: QRView(
-                      key: qrKey,
-                      onQRViewCreated: _onQRViewCreated,
-                    ),
-                  ),
-                ),
-              ],
-            ),
+    return Scaffold(
+        backgroundColor: Colors.white,
+        body: Container(
+          child: Center(
+            child: CircularProgressIndicator(),
           ),
         ));
   }

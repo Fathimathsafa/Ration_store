@@ -40,6 +40,11 @@ dependencies:
   lottie: ^3.1.0
   qr_code_scanner: ^1.0.1
   url_launcher: ^6.2.6
+  qr_flutter: ^4.1.0
+  barcode_scanner: ^3.6.2
+  flutter_barcode_scanner: 
+
+
 
 
 
