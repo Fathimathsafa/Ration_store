@@ -1,13 +1,15 @@
 
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:ration_shop/core/constants/color.dart';
-void main(){
-  runApp(MaterialApp(debugShowCheckedModeBanner: false,
-  home:Payment_page(),));
-}
+import 'package:ration_shop/presentation/user/first_page/view/first_page.dart';
+
 
 class Payment_page extends StatefulWidget {
+
+
 
 
   @override
@@ -15,6 +17,13 @@ class Payment_page extends StatefulWidget {
 }
 
 class _Payment_pageState extends State<Payment_page> {
+@override
+  void initState() {
+Timer(Duration(seconds: 3),(){
+  Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=>First_Page()));
+}) ;
+super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +39,7 @@ class _Payment_pageState extends State<Payment_page> {
                 width: 200,
                 child:  Lottie.asset("assets/Animation - 1711328118289 (3).json"),
               ),
-              Text("CONFORM ",style: TextStyle(color: ColorTheme.primarycolor),)
+              Text("CONFIRM ",style: TextStyle(color: ColorTheme.primarycolor),)
             ],
           ),
         ),

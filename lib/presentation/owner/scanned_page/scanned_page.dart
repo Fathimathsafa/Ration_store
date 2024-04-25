@@ -1,9 +1,9 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:provider/provider.dart';
 import '../../../core/constants/color.dart';
 import '../../../global_widget/cnfrm_page.dart';
+import '../Scanner_Page/view/Scanner_Screen.dart';
 import '../payment page/view/payment_page.dart';
 
 class Scanned_Page extends StatelessWidget {
@@ -20,6 +20,9 @@ class Scanned_Page extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: ColorTheme.maincolor,
+        leading: IconButton(onPressed: () {
+          Navigator.of(context).push(MaterialPageRoute(builder: (context)=>ScannerScreen()));
+        }, icon: Icon(Icons.arrow_back_outlined,color: ColorTheme.primarycolor,),),
         title: Text(
           category,
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
@@ -30,7 +33,7 @@ class Scanned_Page extends StatelessWidget {
         child: GridView.builder(
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
-            childAspectRatio: 1 / 1.5,
+            childAspectRatio: 1 / 1.6,
           ),
           itemCount: listOfMaps.length,
           itemBuilder: (BuildContext context, int index) {
@@ -57,7 +60,7 @@ class Scanned_Page extends StatelessWidget {
               ),
             ),
             Container(
-              width: 130,
+              width: 160,
               color: ColorTheme.maincolor,
               child: FloatingActionButton(
                 onPressed: () {
@@ -75,7 +78,7 @@ class Scanned_Page extends StatelessWidget {
           ],
         ),
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
 }

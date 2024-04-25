@@ -38,7 +38,7 @@ class Confirm_page extends StatelessWidget {
             child: GridView.builder(
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
-                childAspectRatio: 1 / 1.5,
+                childAspectRatio: 1 / 1.6,
               ),
               itemCount: collection.length,
               itemBuilder: (BuildContext context, int index) {

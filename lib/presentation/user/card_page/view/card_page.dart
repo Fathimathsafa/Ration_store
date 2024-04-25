@@ -49,7 +49,7 @@ class CardPage extends StatelessWidget {
                     child: GridView.builder(
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2, // Adjust the cross axis count as needed
-                        childAspectRatio: 1 / 1.5, // Adjust the aspect ratio as needed
+                        childAspectRatio: 1 / 1.6, // Adjust the aspect ratio as needed
                       ),
                       itemCount: subSnapshot.data!.docs.length,
                       itemBuilder: (BuildContext context, int index) {
