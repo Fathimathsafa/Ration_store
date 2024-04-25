@@ -15,6 +15,11 @@ class Confirm_page extends StatelessWidget {
   Widget build(BuildContext context) {
     List<Map<String,dynamic>> datas =
         Provider.of<tile_controller>(context).collection;
+    Map<String, dynamic>combinedData = {
+      'category':category,
+      'price':Provider.of<tile_controller>(context).total,
+      'mapList':datas,
+    };
     return Scaffold(
       appBar: AppBar(
         backgroundColor: ColorTheme.maincolor,
@@ -57,7 +62,7 @@ class Confirm_page extends StatelessWidget {
             ),
             Container(width: 130,
                 child: FloatingActionButton(onPressed: (){
-                 Navigator.of(context).push(MaterialPageRoute(builder: (context)=>qr_image_page(datas: datas,)));
+                 Navigator.of(context).push(MaterialPageRoute(builder: (context)=>qr_image_page(datas: combinedData,)));
                 },
                   child: Text("CONFIRM",style:TextStyle(
                       fontSize: 20,color: Colors.white,fontWeight: FontWeight.bold)),

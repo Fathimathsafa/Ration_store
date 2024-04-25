@@ -7,7 +7,7 @@ import 'package:qr_flutter/qr_flutter.dart';
 import '../../../../core/constants/color.dart';
 
 class qr_image_page extends StatelessWidget {
-  List<Map<String, dynamic>> datas;
+  Map<String, dynamic> datas;
   qr_image_page({required this.datas});
   @override
   Widget build(BuildContext context) {
